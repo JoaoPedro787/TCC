@@ -50,7 +50,9 @@ const SignScreen = ({ navigation }) => {
       </View>
 
       {/* Botão de Criar */}
-      <TouchableOpacity style={styles.blue_button}>
+      <TouchableOpacity 
+      style={styles.blue_button}
+      onPress={() => navigation.navigate('Profile Picture Selection')}>
         <Text style={styles.subtitle}>CRIAR CONTA</Text>
       </TouchableOpacity>
 
