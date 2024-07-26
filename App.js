@@ -5,6 +5,7 @@ import StartScreen from './screens/StartScreen';
 import LoginScreen from './screens/Login';
 import SignScreen from './screens/SignUp';
 import ProfilePictureSelection from './screens/ProfilePictureSelection';
+import HomeScreen from './screens/HomeScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -17,7 +18,10 @@ const App = () => {
         options={{ headerShown: false }}/>
         <Stack.Screen name="Login" component={LoginScreen} />
         <Stack.Screen name="Sign Up" component={SignScreen} />
-        <Stack.Screen name="Profile Picture Selection" component={ProfilePictureSelection} />
+        <Stack.Screen name="Profile Picture Selection" 
+        component={ProfilePictureSelection} 
+        options={{ headerShown: false }}/>
+        <Stack.Screen name="Home Screen" component={HomeScreen} />
         
       </Stack.Navigator>
     </NavigationContainer>

@@ -27,6 +27,15 @@ const ProfilePictureSelection = ({ navigation }) => {
       <LinearGradient 
       style={styles.container}
       colors={['#3580f9', '#96def5']}>
+        <TouchableOpacity
+        style={{alignSelf:'flex-start'}}
+        onPress={() => navigation.goBack()}>
+          <Image
+          source={require("../src/templates/image/seta.png")}>
+
+          </Image>
+
+        </TouchableOpacity>
 
         {/* Logo principal */}
         <View style={styles.icon_container}>
@@ -73,8 +82,11 @@ const ProfilePictureSelection = ({ navigation }) => {
             </TouchableOpacity>
           ))}
         </View>
-
-        <TouchableOpacity style={styles.yellow_button}>
+        
+        {/* Botão para ir ao HomeScreen */}
+        <TouchableOpacity 
+        style={styles.yellow_button}
+        onPress={() => navigation.navigate('Home Screen')}>
           <Text style={styles.text}>Concluído</Text>
         </TouchableOpacity>
 

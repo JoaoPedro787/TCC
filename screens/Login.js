@@ -46,7 +46,9 @@ const LoginScreen = ({ navigation }) => {
       
 
       {/* Botão de Entrar */}
-      <TouchableOpacity style={styles.blue_button}>
+      <TouchableOpacity 
+      style={styles.blue_button}
+      onPress={() => navigation.navigate('Home Screen')}>
         <Text style={styles.subtitle}>ENTRAR</Text>
       </TouchableOpacity>
 
