@@ -1,8 +1,8 @@
 import React from 'react';
-import { View, Text, Button, Image,TouchableOpacity} from 'react-native';
-import styles from '../styles/HomeScreenStyle';
+import { View, Text,Image,TouchableOpacity} from 'react-native';
+import styles from '../styles/StartScreenStyle';
 
-const HomeScreen = ({ navigation }) => {
+const StartScreen = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <Text style={styles.title}><Text style={styles.orange_text}>LP</Text>LIBRAS</Text>
@@ -27,4 +27,4 @@ const HomeScreen = ({ navigation }) => {
   );
 };
 
-export default HomeScreen;
+export default StartScreen;

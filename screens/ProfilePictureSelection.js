@@ -1,17 +1,38 @@
-import React from 'react';
-import { View, Text, Image, TouchableOpacity, TextInput, ScrollView } from 'react-native';
+import React, { useState } from 'react';
+import { View, Text, Image, TouchableOpacity, TextInput, ScrollView} from 'react-native';
 import styles from '../styles/ProfilePictureSelectionStyle';
+import LinearGradient from 'react-native-linear-gradient';
 
 const ProfilePictureSelection = ({ navigation }) => {
-  return (
-    <ScrollView contentContainerStyle={styles.scrollContainer}>
-      <View style={styles.container}>
+  const [mainIcon, setMainIcon] = useState(require("../src/templates/image/profiles/ProfileBlue.png"));
+  const [icons, setIcons] = useState([
+    require("../src/templates/image/profiles/ProfilePurple.png"),
+    require("../src/templates/image/profiles/ProfileYellow.png"),
+    require("../src/templates/image/profiles/ProfileDarkBlue.png"),
+    require("../src/templates/image/profiles/ProfileGreen.png"),
+    require("../src/templates/image/profiles/ProfilePink.png"),
+    require("../src/templates/image/profiles/ProfileLightGreen.png"),
+  ]);
 
-        {/* Logo principal, implementar função para quando clicar trocar de cor */}
+  const switchIcons = (index) => {
+    const newIcons = [...icons];
+    const clickedIcon = newIcons[index];
+    newIcons[index] = mainIcon;
+    setMainIcon(clickedIcon);
+    setIcons(newIcons);
+  };
+
+  return (
+    <ScrollView>
+      <LinearGradient 
+      style={styles.container}
+      colors={['#3580f9', '#96def5']}>
+
+        {/* Logo principal */}
         <View style={styles.icon_container}>
           <Image
             style={styles.icon}
-            source={require("../src/templates/image/profiles/ProfileBlue.png")}
+            source={mainIcon}
           />
         </View>
 
@@ -41,61 +62,23 @@ const ProfilePictureSelection = ({ navigation }) => {
 
         <Text style={styles.text}>Ícones</Text>
 
+        {/* Muda de imagem ao clicar */}
         <View style={styles.card}>
-          {/* Icone Roxo */}
-          <TouchableOpacity style={styles.icon_card_Container}>
-            <Image
-              style={styles.icon_card}
-              source={require("../src/templates/image/profiles/ProfilePurple.png")}
-            />
-          </TouchableOpacity>
-
-          {/* Icone Amarelo */}
-          <TouchableOpacity style={styles.icon_card_Container}>
-            <Image
-              style={styles.icon_card}
-              source={require("../src/templates/image/profiles/ProfileYellow.png")}
-            />
-          </TouchableOpacity>
-
-          {/* Icone Azul escuro */}
-          <TouchableOpacity style={styles.icon_card_Container}>
-            <Image
-              style={styles.icon_card}
-              source={require("../src/templates/image/profiles/ProfileDarkBlue.png")}
-            />
-          </TouchableOpacity>
-
-          {/* Icone Verde */}
-          <TouchableOpacity style={styles.icon_card_Container}>
-            <Image
-              style={styles.icon_card}
-              source={require("../src/templates/image/profiles/ProfileGreen.png")}
-            />
-          </TouchableOpacity>
-
-          {/* Icone Rosa */}
-          <TouchableOpacity style={styles.icon_card_Container}>
-            <Image
-              style={styles.icon_card}
-              source={require("../src/templates/image/profiles/ProfilePink.png")}
-            />
-          </TouchableOpacity>
-
-          {/* Icone Verde Claro */}
-          <TouchableOpacity style={styles.icon_card_Container}>
-            <Image
-              style={styles.icon_card}
-              source={require("../src/templates/image/profiles/ProfileLightGreen.png")}
-            />
-          </TouchableOpacity>
+          {icons.map((icon, index) => (
+            <TouchableOpacity key={index} style={styles.icon_card_Container} onPress={() => switchIcons(index)}>
+              <Image
+                style={styles.icon_card}
+                source={icon}
+              />
+            </TouchableOpacity>
+          ))}
         </View>
 
         <TouchableOpacity style={styles.yellow_button}>
           <Text style={styles.text}>Concluído</Text>
         </TouchableOpacity>
 
-      </View>
+      </LinearGradient>
     </ScrollView>
   );
 };
